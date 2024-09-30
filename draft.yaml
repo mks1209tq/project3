@@ -1,0 +1,15 @@
+models:
+  Employee:
+      name: string:400
+      softDeletes
+  Position:
+      name: string:400
+      softDeletes
+  Org:
+      name: string:400
+      softDeletes
+  Document:
+      name: string:400
+      softDeletes
+
+seeders: Employee, Position, Org, Document
