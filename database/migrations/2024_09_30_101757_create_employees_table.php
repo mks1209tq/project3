@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('name', 400);
+
+            $table->unsignedBigInteger('position_id');
+            
             $table->timestamps();
             $table->softDeletes();
         });

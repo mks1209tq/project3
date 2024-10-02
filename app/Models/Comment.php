@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Employee extends Model
+class Comment extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,6 +18,7 @@ class Employee extends Model
      */
     protected $fillable = [
         'name',
+        'post_id',
     ];
 
     /**
@@ -26,13 +28,11 @@ class Employee extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'post_id' => 'integer',
     ];
 
-    public function position()
-
+    public function post(): BelongsTo
     {
-
-        return $this->belongsTo(Position::class);
-
+        return $this->belongsTo(Post::class);
     }
 }

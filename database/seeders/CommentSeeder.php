@@ -2,18 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Org;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class OrgSeeder extends Seeder
+class CommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Org::factory()->count(1)->create();
-
+        Comment::factory()->count(5)->create();
     }
 }

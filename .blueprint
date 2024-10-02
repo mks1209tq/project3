@@ -1,22 +1,17 @@
 created:
-    - database/factories/EmployeeFactory.php
-    - database/factories/PositionFactory.php
-    - database/factories/OrgFactory.php
-    - database/factories/DocumentFactory.php
-    - database/migrations/2024_09_30_101757_create_employees_table.php
-    - database/migrations/2024_09_30_101758_create_positions_table.php
-    - database/migrations/2024_09_30_101759_create_orgs_table.php
-    - database/migrations/2024_09_30_101800_create_documents_table.php
-    - app/Models/Employee.php
-    - app/Models/Position.php
-    - app/Models/Org.php
-    - app/Models/Document.php
-    - database/seeders/EmployeeSeeder.php
-    - database/seeders/PositionSeeder.php
-    - database/seeders/OrgSeeder.php
-    - database/seeders/DocumentSeeder.php
+    - database/factories/PostFactory.php
+    - database/factories/CommentFactory.php
+    - database/migrations/2024_10_02_074139_create_posts_table.php
+    - database/migrations/2024_10_02_074140_create_comments_table.php
+    - app/Models/Post.php
+    - app/Models/Comment.php
+    - database/seeders/PostSeeder.php
+    - database/seeders/CommentSeeder.php
 models:
-    Employee: { name: 'string:400', softdeletes: softDeletes }
-    Position: { name: 'string:400', softdeletes: softDeletes }
-    Org: { name: 'string:400', softdeletes: softDeletes }
-    Document: { name: 'string:400', softdeletes: softDeletes }
+    Document: { name: string }
+    Employee: { name: string }
+    Org: { name: string, parent_id: 'integer nullable' }
+    Position: { name: string }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    Post: { title: 'string:400', relationships: { hasMany: Comment }, softdeletes: softDeletes }
+    Comment: { name: 'string:400', relationships: { belongsTo: Post }, softdeletes: softDeletes }

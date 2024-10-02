@@ -2,24 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrgResource\Pages;
-use App\Filament\Resources\OrgResource\RelationManagers;
-use App\Models\Org;
+use App\Filament\Resources\CommentResource\Pages;
+use App\Filament\Resources\CommentResource\RelationManagers;
+use App\Models\Comment;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-// use App\Filament\Resources\OrgResource\RelationManagers\ChildrenRelationManager;
-
-class OrgResource extends Resource
+class CommentResource extends Resource
 {
-    protected static ?string $model = Org::class;
+    protected static ?string $model = Comment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,6 +24,9 @@ class OrgResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\Select::make('post_id')
+                    ->relationship('post', 'title')
                     ->required(),
             ]);
     }
@@ -38,6 +37,9 @@ class OrgResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('post.title')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -68,19 +70,17 @@ class OrgResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ChildrenRelationManager::class,
-            RelationManagers\PositionsRelationManager::class,
-            
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrgs::route('/'),
-            'create' => Pages\CreateOrg::route('/create'),
-            'view' => Pages\ViewOrg::route('/{record}'),
-            'edit' => Pages\EditOrg::route('/{record}/edit'),
+            'index' => Pages\ListComments::route('/'),
+            'create' => Pages\CreateComment::route('/create'),
+            'view' => Pages\ViewComment::route('/{record}'),
+            'edit' => Pages\EditComment::route('/{record}/edit'),
         ];
     }
 }

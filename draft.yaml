@@ -1,15 +1,13 @@
 models:
-  Employee:
-      name: string:400
+  Post:
+      title: string:400
+      relationships:
+        hasMany: Comment
       softDeletes
-  Position:
+  Comment:
       name: string:400
-      softDeletes
-  Org:
-      name: string:400
-      softDeletes
-  Document:
-      name: string:400
+      relationships:
+        belongsTo: Post
       softDeletes
 
-seeders: Employee, Position, Org, Document
+seeders: Post, Comment

@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('orgs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 400);
+
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')
+            ->references('id')
+            ->on('orgs')
+            ->onDelete('set null');
+            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -24,6 +31,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('orgs', function (Blueprint $table) {
+            $table->dropForeign(['parent_id']);
+        });
+        
         Schema::dropIfExists('orgs');
     }
 };

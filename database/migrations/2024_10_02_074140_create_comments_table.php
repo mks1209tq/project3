@@ -11,19 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('name', 400);
-
-            
-            
-            $table->unsignedBigInteger('org_id');
-            $table->foreign('org_id')
-            ->references('id')
-            ->on('orgs')
-            ->onDelete('set null');
-
-            
+            $table->foreignId('post_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('comments');
     }
 };

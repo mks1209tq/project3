@@ -2,24 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrgResource\Pages;
-use App\Filament\Resources\OrgResource\RelationManagers;
-use App\Models\Org;
+use App\Filament\Resources\PostResource\Pages;
+use App\Filament\Resources\PostResource\RelationManagers;
+use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-// use App\Filament\Resources\OrgResource\RelationManagers\ChildrenRelationManager;
+use App\Filament\Resources\PostResource\RelationManagers\CommentsRelationManager;
 
-class OrgResource extends Resource
+class PostResource extends Resource
 {
-    protected static ?string $model = Org::class;
+    protected static ?string $model = Post::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -27,7 +25,7 @@ class OrgResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
                     ->required(),
             ]);
     }
@@ -36,7 +34,7 @@ class OrgResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -68,19 +66,17 @@ class OrgResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ChildrenRelationManager::class,
-            RelationManagers\PositionsRelationManager::class,
-            
+            CommentsRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrgs::route('/'),
-            'create' => Pages\CreateOrg::route('/create'),
-            'view' => Pages\ViewOrg::route('/{record}'),
-            'edit' => Pages\EditOrg::route('/{record}/edit'),
+            'index' => Pages\ListPosts::route('/'),
+            'create' => Pages\CreatePost::route('/create'),
+            'view' => Pages\ViewPost::route('/{record}'),
+            'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 }

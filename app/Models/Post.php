@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Employee extends Model
+class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,7 +17,7 @@ class Employee extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'title',
     ];
 
     /**
@@ -28,11 +29,8 @@ class Employee extends Model
         'id' => 'integer',
     ];
 
-    public function position()
-
+    public function comments(): HasMany
     {
-
-        return $this->belongsTo(Position::class);
-
+        return $this->hasMany(Comment::class);
     }
 }

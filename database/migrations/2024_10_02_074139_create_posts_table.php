@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('orgs', function (Blueprint $table) {
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('Org');
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 400);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orgs', function (Blueprint $table) {
-            $table->dropColumn('parent_id');
-        });
+        Schema::dropIfExists('posts');
     }
 };

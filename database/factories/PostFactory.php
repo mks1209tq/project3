@@ -4,17 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Position;
-use App\Models\Org;
+use App\Models\Post;
 
-class PositionFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Position::class;
+    protected $model = Post::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +21,7 @@ class PositionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'org_id' => Org::factory()->create()->id,
+            'title' => $this->faker->sentence(4),
         ];
     }
 }
