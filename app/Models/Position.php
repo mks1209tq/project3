@@ -27,4 +27,12 @@ class Position extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function orgs()
+
+    {
+
+        return $this->belongsTo(Org::class);
+
+    }
 }

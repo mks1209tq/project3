@@ -27,4 +27,36 @@ class Org extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function parent()
+
+    {
+
+        return $this->belongsTo(Org::class, 'parent_id');
+
+    }
+
+
+
+
+    public function children()
+
+    {
+
+        return $this->hasMany(Org::class, 'parent_id');
+
+    }
+
+
+
+
+    public function positions()
+
+    {
+
+        return $this->hasMany(Position::class);
+
+    }
+
+
 }
