@@ -60,5 +60,10 @@ class Org extends Model
             ->logOnlyDirty();
     }
 
+    public function activities()
+    {
+        return $this->morphMany(Activity::class, 'subject');
+    }
 
+    
 }

@@ -70,6 +70,7 @@ class OrgResource extends Resource
         return [
             RelationManagers\ChildrenRelationManager::class,
             RelationManagers\PositionsRelationManager::class,
+            RelationManagers\ActivityRelationManager::class,
             
         ];
     }
