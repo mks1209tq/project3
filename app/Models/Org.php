@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 
 class Org extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -29,33 +32,32 @@ class Org extends Model
     ];
 
     public function parent()
-
     {
-
         return $this->belongsTo(Org::class, 'parent_id');
-
     }
 
 
 
 
     public function children()
-
     {
-
         return $this->hasMany(Org::class, 'parent_id');
-
     }
 
 
 
 
     public function positions()
-
     {
-
         return $this->hasMany(Position::class);
+    }
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logAll()
+            ->logExcept(['updated_at'])
+            ->logOnlyDirty();
     }
 
 
