@@ -12,8 +12,4 @@ class Activity extends SpatieActivity
         return $this->morphTo();
     }
 
-    public function org()
-    {
-        return $this->subject()->where('subject_type', Org::class);
-    }
 }
