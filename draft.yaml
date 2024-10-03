@@ -1,13 +1,8 @@
 models:
-  Post:
+  Project:
       title: string:400
       relationships:
-        hasMany: Comment
-      softDeletes
-  Comment:
-      name: string:400
-      relationships:
-        belongsTo: Post
+        belongsToMany: Employee
       softDeletes
 
-seeders: Post, Comment
+seeders: Project
