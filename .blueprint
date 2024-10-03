@@ -1,15 +1,31 @@
 created:
-    - database/factories/ProjectFactory.php
-    - database/migrations/2024_10_02_124626_create_projects_table.php
-    - database/migrations/2024_10_02_124627_create_employee_project_table.php
-    - app/Models/Project.php
-    - database/seeders/ProjectSeeder.php
+    - database/factories/TagFactory.php
+    - database/factories/AssetFactory.php
+    - database/factories/VehicleFactory.php
+    - database/factories/TaggableFactory.php
+    - database/migrations/2024_10_03_081517_create_tags_table.php
+    - database/migrations/2024_10_03_081518_create_assets_table.php
+    - database/migrations/2024_10_03_081519_create_vehicles_table.php
+    - database/migrations/2024_10_03_081520_create_taggables_table.php
+    - database/migrations/2024_10_03_081521_create_tagables_table.php
+    - app/Models/Tag.php
+    - app/Models/Asset.php
+    - app/Models/Vehicle.php
+    - app/Models/Taggable.php
+    - database/seeders/TagSeeder.php
+    - database/seeders/AssetSeeder.php
+    - database/seeders/VehicleSeeder.php
+    - database/seeders/TaggableSeeder.php
 models:
+    Comment: { name: string, post_id: integer }
     Document: { name: string }
-    Employee: { name: string }
+    Employee: { name: string, position_id: integer }
     Org: { name: string, parent_id: 'integer nullable' }
-    Position: { name: string }
+    Position: { name: string, org_id: integer }
+    Post: { title: string }
+    Project: { title: string }
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
-    Post: { title: 'string:400', relationships: { hasMany: Comment }, softdeletes: softDeletes }
-    Comment: { name: 'string:400', relationships: { belongsTo: Post }, softdeletes: softDeletes }
-    Project: { title: 'string:400', relationships: { belongsToMany: Employee }, softdeletes: softDeletes }
+    Tag: { name: string, softdeletes: softDeletes, relationships: { morphedByMany: 'Asset, Vehicle' } }
+    Asset: { name: string, softdeletes: softDeletes, relationships: { morphToMany: Tag } }
+    Vehicle: { name: string, softdeletes: softDeletes, relationships: { morphToMany: Tag } }
+    Taggable: { tag_id: 'id foreign:tags', taggable_id: id, taggable_type: string }
