@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use EightyNine\Approvals\Models\ApprovableModel;
 
-class Post extends Model
+class Post extends ApprovableModel
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
