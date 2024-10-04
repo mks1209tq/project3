@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use App\Filament\Resources\TagResource\RelationManagers\VehiclesRelationManager;
-use App\Filament\Resources\TagResource\RelationManagers\AssetsRelationManager;
+use App\Filament\Resources\TagResource\RelationManagers\AssetsRelationManager;  
 
 
 class TagResource extends Resource
