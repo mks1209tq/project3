@@ -11,6 +11,14 @@ Route::get('/', function () {
 });
 
 Route::get('/email', function () {
-    Mail::to('tanseeq1209@gmail.com')->send(new WelcomeEmail());
-    return 'Email sent from Tanseeq to tanseeq1209@gmail.com';
+    $to = [
+        'rumanmohammed@tanseeqinvestment.com',
+        'badruddin@tanseeqinvestment.com'
+    ];
+    $cc = [
+        'tanseeq1209@gmail.com'
+    ];
+
+    Mail::to($to)->cc($cc)->send(new WelcomeEmail());
+    return 'Email sent from Tanseeq to multiple recipients';
 });
