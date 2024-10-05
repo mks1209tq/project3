@@ -15,9 +15,15 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Spatie\Activitylog\Models\Activity as Activity;
 
+use App\Filament\Clusters\System;
+
+
+
 class ActivityResource extends Resource
 {
     protected static ?string $model = Activity::class;
+    
+    protected static ?string $cluster = System::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -78,4 +84,5 @@ class ActivityResource extends Resource
     {
         return parent::getEloquentQuery()->latest();
     }
+    
 }
