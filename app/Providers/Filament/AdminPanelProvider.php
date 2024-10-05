@@ -30,6 +30,8 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->databaseNotifications()
             ->profile(isSimple: false)
+            ->sidebarCollapsibleOnDesktop()
+            ->sidebarWidth('15rem')
             ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
