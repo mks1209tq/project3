@@ -32,6 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->sidebarCollapsibleOnDesktop()
             ->sidebarWidth('15rem')
+            ->unsavedChangesAlerts()
             ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
