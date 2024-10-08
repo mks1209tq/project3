@@ -1,0 +1,25 @@
+models:
+  Tag:
+    name: string
+    softDeletes
+    relationships:
+      morphedByMany: Asset, Vehicle
+
+  Asset:
+    name: string
+    softDeletes
+    relationships:
+      morphToMany: Tag
+
+  Vehicle:
+    name: string
+    softDeletes
+    relationships:
+      morphToMany: Tag
+
+  Taggable:
+    tag_id: id foreign:tags
+    taggable_id: id
+    taggable_type: string
+
+seeders: Tag, Asset, Vehicle, Taggable
