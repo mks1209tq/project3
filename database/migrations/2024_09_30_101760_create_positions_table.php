@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('org_id');
             $table->foreign('org_id')
             ->references('id')
-            ->on('orgs')
-            ->onDelete('set null');
+            ->on('orgs');
+
 
             
             $table->timestamps();
