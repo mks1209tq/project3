@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
 // #[ObservedBy(UserObserver::class)]
 class User extends Authenticatable implements FilamentUser
