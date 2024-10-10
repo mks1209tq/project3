@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Our Site</title>
     
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="{{ asset('images/ps.jpg') }}" alt="Logo" class="logo w-40 float-right">
+            <img src="{{ asset('images/ps.jpg') }}" alt="Logo" class="logo w-20 float-right">
         </div>
     </header>
 
