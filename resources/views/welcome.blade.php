@@ -1,4 +1,14 @@
-<!--
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanseeq Investment</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="h-full">
+    <h1>Hello... from Tanseeq Investment</h1>
+    <!--
   This example requires updating your template:
 
   ```
@@ -55,7 +65,7 @@
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
           <div class="flex h-16 shrink-0 items-center">
-            <img class="h-8 w-auto" src="<img src="{{ asset('images/ps.jpg') }}" alt="Logo" class="logo w-20 float-right">" alt="Your Company">
+            <img class="h-8 w-auto" src="{{ asset('images/ps.jpg') }}" alt="Logo" class="logo w-40 float-right">
           </div>
           <nav class="flex flex-1 flex-col">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -149,7 +159,7 @@
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
       <div class="flex h-16 shrink-0 items-center">
-        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+        <img class="h-8 w-auto" src="{{ asset('images/ps.jpg') }}" alt="Your Company">
       </div>
       <nav class="flex flex-1 flex-col">
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -233,7 +243,7 @@
           </li>
           <li class="-mx-6 mt-auto">
             <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-              <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <img class="h-8 w-8 rounded-full bg-gray-50" src="{{ asset('images/ps.jpg') }}" alt="">
               <span class="sr-only">Your profile</span>
               <span aria-hidden="true">Tom Cook</span>
             </a>
@@ -260,7 +270,7 @@
   <main class="lg:pl-72">
     <div class="xl:pl-96">
       <div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
-        Hello from Tanseeq<!-- Main area -->
+        Hello... from Tanseeq Invest<!-- Main area -->
       </div>
     </div>
   </main>
@@ -272,3 +282,6 @@
 
             
         
+</body>
+
+</html>
