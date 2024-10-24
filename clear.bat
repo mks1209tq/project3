@@ -1,3 +1,4 @@
+@REM this is a comment
 echo Clearing cache...
 call php artisan filament:optimize
 call php artisan filament:optimize-clear
