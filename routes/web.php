@@ -1,5 +1,8 @@
 <?php
 
+require __DIR__.'/auth.php';
+
+
 use Illuminate\Support\Facades\Route;
 use Spatie\Activitylog\Models\Activity;
 use App\Mail\WelcomeEmail;
